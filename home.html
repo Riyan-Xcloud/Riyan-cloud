@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyan Cloud</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1950&q=80'); /* Ganti URL jika ingin pakai foto sendiri */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Transparan sedikit agar background terlihat */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hai, Welcome to Web Riyan Cloud!</h1>
+        <p>Web ini dikembangkan oleh anak yang baru masuk SMP. Jika web ini kurang menarik atau terlihat jelek, maklumi saja karena masih belajar. Sekian dan terima kasih 🙏.</p>
+        
+        <div class="buttons">
+            <button onclick="openApp('whatsapp')">Channel WhatsApp</button>
+            <button onclick="openApp('tiktok')">Channel TikTok</button>
+            <button onclick="openApp('youtube')">Channel YT</button>
+        </div>
+    </div>
+
+    <script>
+        function openApp(channel) {
+            let url = "";
+
+            switch(channel) {
+                case "whatsapp":
+                    url = "https://wa.me/6281234567890"; // Ganti dengan link WhatsApp kamu
+                    break;
+                case "tiktok":
+                    url = "https://www.tiktok.com/@username"; // Ganti dengan link TikTok kamu
+                    break;
+                case "youtube":
+                    url = "https://www.youtube.com/channel/UCxxxxx"; // Ganti dengan link YouTube kamu
+                    break;
+            }
+
+            window.open(url, "_blank");
+        }
+    </script>
+</body>
+</html>
