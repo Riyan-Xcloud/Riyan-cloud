@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>my-web</title>
+</head>
+<body>
+  <style>
+body {
+  background: linear-gradient(to bottom, #e916, #ffe6cc);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+  .navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #ccc;
+}
+.text-neon {
+  font-family: 'Arial', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px black, 0 0 40px white, 0 0 50px black;
+  animation: neon 1.5s ease-in-out infinite;
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px black, 0 0 40px white, 0 0 50px black;
+  }
+  50% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px black, 0 0 20px white, 0 0 25px black;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e9163, 0 0 40px white, 0 0 50px black;
+  }
+.text-keren {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #212121;
+  text-align: center;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  background: linear-gradient(to right, #ff69b4, #ffe6cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.text-keren span {
+  font-size: 40px;
+  font-weight: 700;
+  color: #ff9900;
+}
+
+
+
+
+</style>
+ <nav class="navbar">
+  <ul>
+    <li><a href="home.html">home</a></li>
+    <li><a href="code.html">code</a></li>
+    <li><a href="produk.html">produk</a></li>
+  </ul>
+</nav>
+
+<h1 class="text-neon">Selamat Datang di Website Riyan_Cloud</h1>
+<h1 class="text-keren">Web ini berisi data data code by riyan Cloud <span>dan juga ada berbagai code/apapun itu yang ada di web ini</span></h1>
+
+
+
+</body>
+  </html>
