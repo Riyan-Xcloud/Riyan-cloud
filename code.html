@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>List Kode - Copy & Search</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #searchInput {
+      padding: 10px 15px;
+      width: 100%;
+      max-width: 500px;
+      font-size: 16px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .code-list {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .code-box {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .code-box h3 {
+      margin-top: 0;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+      font-family: monospace;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .copy-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .copy-btn i {
+      font-style: normal;
+    }
+
+    .copied-msg {
+      color: green;
+      font-size: 13px;
+      position: absolute;
+      right: 20px;
+      top: 55px;
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .copy-btn {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>List Kode - Copy & Search</h1>
+    <input type="text" id="searchInput" placeholder="Cari kode berdasarkan judul...">
+    <div class="code-list" id="codeList">
+      <!-- JavaScript akan isi di sini -->
+    </div>
+  </div>
+
+  <script>
+    const codeSnippets = [
+      {
+        title: "HTML Dasar",
+        code: `<h1>Halo Dunia</h1>\n<p>Ini paragraf HTML dasar.</p>`
+      },
+      {
+        title: "CSS Background",
+        code: `body {\n  background-image: url('background.jpg');\n  background-size: cover;\n}`
+      },
+      {
+        title: "JavaScript Alert",
+        code: `alert("Halo dari JavaScript!");`
+      },
+      {
+        title: "Flexbox Layout",
+        code: `.container {\n  display: flex;\n  justify-content: center;\n}`
+      }
+    ];
+
+    const codeList = document.getElementById("codeList");
+
+    function displayCodes(filter = "") {
+      codeList.innerHTML = "";
+      codeSnippets.forEach((item, index) => {
+        if (item.title.toLowerCase().includes(filter.toLowerCase())) {
+          const codeBox = document.createElement("div");
+          codeBox.className = "code-box";
+
+          const title = document.createElement("h3");
+          title.textContent = item.title;
+
+          const pre = document.createElement("pre");
+          pre.textContent = item.code;
+
+          const btn = document.createElement("button");
+          btn.className = "copy-btn";
+          btn.innerHTML = `<i>📋</i> Salin`;
+          btn.onclick = () => copyToClipboard(item.code, index);
+
+          const msg = document.createElement("div");
+          msg.className = "copied-msg";
+          msg.id = `copied-${index}`;
+          msg.textContent = "Tersalin!";
+
+          codeBox.appendChild(title);
+          codeBox.appendChild(pre);
+          codeBox.appendChild(btn);
+          codeBox.appendChild(msg);
+          codeList.appendChild(codeBox);
+        }
+      });
+    }
+
+    function copyToClipboard(text, index) {
+      navigator.clipboard.writeText(text).then(() => {
+        const msg = document.getElementById(`copied-${index}`);
+        msg.style.display = "block";
+        setTimeout(() => {
+          msg.style.display = "none";
+        }, 2000);
+      });
+    }
+
+    // Search Filter
+    document.getElementById("searchInput").addEventListener("input", function() {
+      const filter = this.value;
+      displayCodes(filter);
+    });
+
+    // Initial load
+    displayCodes();
+  </script>
+</body>
+</html>
