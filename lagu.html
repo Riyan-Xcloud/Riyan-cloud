@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pemutar lagu Riyan cloud</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #000000cc, #000000dd), url('https://images.unsplash.com/photo-1511376777868-611b54f68947') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .player-container {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+      width: 350px;
+    }
+
+    .cover-art {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      transition: 0.3s ease;
+    }
+
+    .input-url {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .buttons button {
+      background: #1db954;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background: #1ed760;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="player-container">
+    <img id="coverArt" class="cover-art" src="https://via.placeholder.com/350x200?text=Cover+Lagu" alt="Cover Art">
+    <input type="text" id="audioUrl" class="input-url" placeholder="Masukkan URL lagu (mp3)">
+    <div class="buttons">
+      <button onclick="loadAndPlay()">Play</button>
+      <button onclick="pauseAudio()">Pause</button>
+    </div>
+    <audio id="audioPlayer" controls></audio>
+  </div>
+
+  <script>
+    const audioPlayer = document.getElementById("audioPlayer");
+    const coverArt = document.getElementById("coverArt");
+    const background = document.body;
+
+    function loadAndPlay() {
+      const url = document.getElementById("audioUrl").value.trim();
+      if (!url) {
+        alert("Masukkan URL lagu terlebih dahulu.");
+        return;
+      }
+
+      audioPlayer.src = url;
+      audioPlayer.play().catch(err => {
+        alert("Gagal memutar lagu. Pastikan URL valid dan dapat diakses.");
+        console.error(err);
+      });
+
+      // Jika kamu ingin mengganti background/cover berdasarkan lagu, kamu bisa set manual
+      // Untuk contoh, kita pakai gambar default
+      coverArt.src = "https://source.unsplash.com/350x200/?music,album";
+      background.style.backgroundImage = `linear-gradient(to bottom, #000000cc, #000000dd), url('https://source.unsplash.com/1600x900/?music,album')`;
+    }
+
+    function pauseAudio() {
+      audioPlayer.pause();
+    }
+  </script>
+</body>
+  </html>
